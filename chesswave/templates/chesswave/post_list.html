@@ -1,0 +1,18 @@
+{% extends 'chesswave/base.html' %}
+
+{% block content %}
+    
+    <h2>Community Blog</h2>
+
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h3><a href="{% url 'chesswave.views.post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+            <p><b>Written by: {{ post.author }}</b></p>
+            <p>{{ post.text|linebreaks }}</p>
+        </div>
+    {% endfor %}
+    
+{% endblock content %}

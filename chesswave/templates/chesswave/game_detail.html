@@ -1,0 +1,23 @@
+{% extends 'chesswave/base.html' %}
+
+{% block content %}
+    
+        
+    <p>White: {{ game.white }}</p>
+    <p>Black: {{ game.black }}</p>   
+    
+     
+    <p>
+        {% for move in moves %}
+            {{ move.move }}       
+        {% endfor %} 
+    </p> 
+
+
+<p>Game Created On: {{ game.created_date }}</p>
+<p>Game Created By: {{ game.author }}</p>
+
+
+                           
+    
+{% endblock %}

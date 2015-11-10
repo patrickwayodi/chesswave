@@ -1,0 +1,27 @@
+{% extends 'chesswave/base.html' %}
+
+
+{% block content %}
+
+
+    <h2>What you can do on Chesswave:</h2>
+    <ul>
+        <li>Play chess on the internet</li>
+        <li>Spectate</li>
+        <li>Write on the community blog</li>
+    </ul>
+    
+
+    <h2>What are you waiting for:</h2>
+    <ul>
+        <li><a href="{% url 'django.contrib.auth.views.login' %}">Log In</a></li>
+        <li><a href="{% url 'register' %}">Sign Up</a></li>
+    </ul>
+        
+
+    
+
+
+   
+    
+{% endblock %}

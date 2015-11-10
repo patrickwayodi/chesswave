@@ -1,0 +1,55 @@
+{% extends 'chesswave/base.html' %}
+
+{% block content %}    
+
+    <h2>{{ player }}'s profile
+    
+    
+    {% if user.is_authenticated %}
+
+            <a href="{% url 'game_new' white=user.username black=player %}">(Send Game Request)</a>
+
+    {% else %}
+
+            <a href="{% url 'django.contrib.auth.views.login' %}">(Send Game Request)</a>
+
+    {% endif %} 
+    </h2>       
+
+ 
+    <h2>The games of {{ player }}</h2>              
+        
+        <table class="table table-bordered">
+            <tr>
+                <th>White</th>
+                <th>Black</th>
+                <th>Date Created</th>
+                <th>View</th> 
+                
+                {% if user.is_authenticated %}
+                    {% if user.username == player %} 
+                        <th>Play</th>                                                           
+                    {% endif %}
+                {% endif %}               
+                             
+            </tr>
+
+    {% for game in games %}
+            <tr>
+                <td>{{ game.white }}</td>
+                <td>{{ game.black }}</td>
+                <td>{{ game.created_date|date:'d-m-Y' }}</td>
+                <td><a href="{% url 'game_detail' pk=game.pk %}">View</a></td>            
+                
+                {% if user.is_authenticated %}
+                    {% if user.username == player %} 
+                        <td><a href="{% url 'game_play' pk=game.pk %}">Play</a></td>                                       
+                    {% endif %}
+                {% endif %}
+                
+            </tr>        
+    {% endfor %}
+    
+        </table>      
+            
+{% endblock content %}

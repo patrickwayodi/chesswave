@@ -1,0 +1,23 @@
+{% extends 'chesswave/base.html' %}
+
+
+{% block content %}
+    
+    <p>White: {{ game.white }}</p>
+    <p>Black: {{ game.black }}</p>    
+    
+    
+    <p>
+        {% for move in moves %}
+            {{ move.move }}       
+        {% endfor %} 
+    </p> 
+           
+    
+    <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Play</button>
+    </form>  
+        
+    
+{% endblock %}    

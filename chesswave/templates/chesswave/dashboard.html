@@ -1,0 +1,37 @@
+{% extends 'chesswave/base.html' %}
+
+
+{% block content %}  
+    
+            
+    <h2>Dashboard</h2>
+    
+    
+    <h3>Games:</h3>
+    
+    <ul>
+        <li><a href="{% url 'search_profile' %}">Search for an opponent</a></li>        
+        <li><a href="{% url 'game_list_user' player=user.username %}">My games</a></li>   
+        <li><a href="{% url 'game_list' %}">Search for games</a></li>         
+    </ul>
+    
+    
+    <h3>Profiles:</h3>
+    
+    <ul>
+        <li><a href="{% url 'profile' player=user.username %}">My profile</a></li>    
+        <li><a href="{% url 'search_profile' %}">Search for other players</a></li>    
+    </ul>    
+    
+    
+    <h3>Blog posts:</h3>
+    
+    <ul> 
+        <li><a href="{% url 'post_new' %}">Write a blog post</a></li>  
+        <li><a href="{% url 'post_draft_list' %}">Drafts of unpublished blog posts</a></li>              
+        <li><a href="{% url 'post_list' %}">All published blog posts</a></li>        
+    </ul>          
+
+   
+    
+{% endblock %}

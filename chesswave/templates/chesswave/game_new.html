@@ -1,0 +1,18 @@
+{% extends 'chesswave/base.html' %}
+
+
+{% block content %}
+
+
+    <h3>Confirm Game Request</h3>
+    
+    <p>White: {{ white }}</p>
+    <p>Black: {{ black }}</p>
+    
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Confirm</button>
+    </form>
+    
+    
+{% endblock %}    

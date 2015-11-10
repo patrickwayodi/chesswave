@@ -1,0 +1,42 @@
+{% extends 'chesswave/base.html' %}
+
+{% block content %}
+
+
+    <form method="POST">{% csrf_token %}
+        {{ form }}
+        <button type="submit">Search for Players</button>
+    </form>  
+    
+    
+    <table class="table table-bordered">
+    
+        <tr>
+            <th>Search Results (Players)</th>
+        </tr>            
+
+        {% for player in searchresults %}
+        <tr>
+            <td><a href="{% url 'profile' player=player.username %}">{{ player.username }}</a></td>
+        </tr>        
+        {% endfor %} 
+
+    </table>  
+    
+    
+    <table class="table table-bordered">
+    
+        <tr>
+            <th>Players</th>
+        </tr> 
+
+        {% for player in players %}
+        <tr>
+            <td><a href="{% url 'profile' player=player.username %}">{{ player.username }}</a></td>
+        </tr>        
+        {% endfor %}    
+
+    </table>     
+            
+            
+{% endblock content %}

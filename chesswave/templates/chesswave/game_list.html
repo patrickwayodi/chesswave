@@ -1,0 +1,28 @@
+{% extends 'chesswave/base.html' %}
+
+{% block content %}    
+
+    <h2>Games</h2>    
+        
+        <table class="table table-bordered">
+            <tr>
+                <th>White</th>
+                <th>Black</th>
+                <th>Date Created</th>
+                <th>View</th>                
+                <th>Play</th>                                
+            </tr>
+
+    {% for game in games %}
+            <tr>
+                <td>{{ game.white }}</td>
+                <td>{{ game.black }}</td>
+                <td>{{ game.created_date }}</td>
+                <td><a href="{% url 'game_detail' pk=game.pk %}">View</a></td>                       
+                <td><a href="{% url 'game_play' pk=game.pk %}">Play</a></td>                                       
+            </tr>        
+    {% endfor %}
+    
+        </table>      
+            
+{% endblock content %}
